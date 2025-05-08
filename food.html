@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <title>Foodgrain, Oil & Masala - GrocDrop.in</title>
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .headerMenu {
+      display: flex;
+      align-items: center;
+      background-color: #f8f8f8;
+      padding: 0 10px;
+      padding-bottom: 5px;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    .categories {
+      margin-right: 15px;
+      padding: 8px 50px;
+      color: black;
+      border-right: 1px solid black;
+    }
+
+    .scrollmenu {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      flex-grow: 1;
+      padding-bottom: 10px;
+      width: 100%;
+    }
+
+    .scrollmenu::-webkit-scrollbar {
+      display: block;
+      height: 5px;
+    }
+
+    .scrollmenu::-webkit-scrollbar-thumb {
+      background-color: #888;
+      border-radius: 5px;
+    }
+
+    .scrollmenu a {
+      text-decoration: none;
+      padding: 10px 30px;
+      border-radius: 5px;
+      color: black;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      min-width: fit-content;
+      border: none;
+    }
+
+    .scrollmenu a:hover {
+      background: transparent;
+      transform: translateY(-3px);
+      box-shadow: none;
+    }
+
+    .scrollmenu a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #333;
+      transition: width 0.3s ease;
+    }
+
+    .scrollmenu a:hover::after {
+      width: 100%;
+    }
+
+    form .form-control.me-2 {
+      min-width: 400px;
+    }
+
+    .header_carousel {
+      max-width: 100%;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      padding: 0;
+      margin: 0;
+      animation: zoomIn 1.2s ease-out;
+    }
+
+    .carousel,
+    .carousel-inner,
+    .carousel-item {
+      height: 400px;
+    }
+
+    .carousel-image {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+      display: block;
+      margin: auto;
+    }
+
+    .category-heading {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .category-heading h1 {
+      font-size: 2.5rem;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .category-heading p {
+      font-size: 1.1rem;
+      color: #666;
+    }
+
+    .product-card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background-color: #fff;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .product-card .card-body {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .product-card h5 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .product-card p {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    .product-card .price {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #28a745;
+      margin-bottom: 15px;
+    }
+
+    .product-card .btn {
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    .footer {
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(3px);
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .footer > div {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .footer.visible > div {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .footer-link {
+      color: #bbb;
+      text-decoration: none;
+      transition: 0.3s;
+      position: relative;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
+    }
+
+    .footer.visible .footer-link {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .social-icons a {
+      font-size: 1.3rem;
+      transition: transform 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
+    }
+
+    .footer.visible .social-icons a {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .footer img {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
+    }
+
+    .footer.visible img {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes zoomIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    .fade-slide-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-slide-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-slide-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .footer-slide-up {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .visible {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+    #cart-details {
+      position: absolute;
+      right: 0;
+      top: 100%;
+      background: white;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+      min-width: 300px;
+    }
+
+    @media (max-width: 768px) {
+      #cart-details {
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        min-width: 100%;
+        max-height: 80vh;
+        overflow-y: auto;
+        border-radius: 20px 20px 0 0;
+        box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+        margin: 0;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      #cart-details::-webkit-scrollbar {
+        display: none;
+      }
+
+      #cart-items {
+        padding: 1rem !important;
+        overflow-y: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      #cart-items::-webkit-scrollbar {
+        display: none;
+      }
+
+      .cart-header {
+        position: sticky;
+        top: 0;
+        background: white;
+        z-index: 1;
+        padding: 1rem !important;
+      }
+
+      #cart-items .mb-2 {
+        padding: 0.75rem;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 0.75rem !important;
+      }
+
+      #cart-items img {
+        width: 60px !important;
+        height: 60px !important;
+        margin-right: 1rem !important;
+      }
+
+      #cart-items .item-details {
+        flex: 1;
+      }
+
+      .cart-footer {
+        position: sticky;
+        bottom: 0;
+        background: white;
+        padding: 1rem !important;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .empty-cart-message {
+        padding: 2rem !important;
+        text-align: center;
+      }
+    }
+
+    .floating-cart-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #0d6efd;
+      color: white;
+      border: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .floating-cart-btn i {
+      font-size: 24px;
+    }
+
+    .floating-cart-btn .badge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      font-size: 14px;
+      padding: 4px 8px;
+      border-radius: 50%;
+      background-color: #dc3545;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .floating-cart-btn:hover {
+      transform: scale(1.05);
+      background-color: #0b5ed7;
+    }
+
+    .floating-cart-btn:active {
+      transform: scale(0.95);
+    }
+
+    @media screen and (max-width: 600px) {
+      .floating-cart-btn {
+        display: flex !important;
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  </style>
+</head>
+
+<body id="top">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <section class="header_menu" id="header_menu">
+    <div class="container-fluid px-0 shadow">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">GrocDrop.in</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="login.html">Login / Register</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  About GrocDrop
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="about.html">About Us</a></li>
+                  <li><a class="dropdown-item" href="brands.html">Brands</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="help.html">Help & Support</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex flex-wrap align-items-center justify-content-center gap-2" role="search">
+              <div class="flex-grow-1" style="min-width: 250px; max-width: 100%;">
+                <input class="form-control w-100" type="search" placeholder="Search for Products, Brands and more"
+                  aria-label="Search" style="min-width: 250px;">
+              </div>
+              <div class="d-flex gap-2">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+                <div class="position-relative">
+                  <button type="button" id="cart-button" class="btn btn-outline-primary" onclick="toggleCart(event)">
+                    <i class="bi bi-cart-fill me-2"></i>
+                    <span>Cart</span>
+                    <span class="badge bg-danger" id="cart-count">0</span>
+                  </button>
+                  <div id="cart-details" class="d-none">
+                    <div class="cart-header p-3 border-bottom">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Your Cart</h5>
+                        <button type="button" class="btn-close" onclick="toggleCart(event)"></button>
+                      </div>
+                    </div>
+                    <div id="cart-items" class="p-3"></div>
+                    <div class="cart-footer p-3 border-top">
+                      <button class="btn btn-success w-100" onclick="proceedToCheckout(event)">Proceed to Checkout</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <button type="button" id="floating-cart-btn" class="floating-cart-btn" onclick="toggleCart(event)">
+        <i class="bi bi-cart-fill"></i>
+        <span class="badge">0</span>
+      </button>
+    </div>
+  </section>
+
+  <section class="headerMenu">
+    <div class="categories">All Categories</div>
+    <div class="scrollmenu">
+      <a href="food.html"
+        style="background-color:#f4a261; color: black; text-decoration: none; transition: 0.3s; cursor: pointer;"
+        onmouseover="this.style.backgroundColor='orange'; this.style.color='white';"
+        onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Foodgrain, Oil & Masala</a>
+      <a href="fruits.html"
+        style="background-color: transparent; color: black; text-decoration: none; transition: 0.3s; cursor: pointer;"
+        onmouseover="this.style.backgroundColor='#560bad'; this.style.color='white';"
+        onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Fruits & Vegetables</a>
+      <a href="dairy.html"
+        style="background-color: transparent; color: black; text-decoration: none; transition: 0.3s; cursor: pointer;"
+        onmouseover="this.style.backgroundColor='#7fdeff'; this.style.color='white';"
+        onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Dairy & Bakery</a>
+      <a href="homecare.html"
+        style="background-color: transparent; color: black; text-decoration: none; transition: 0.3s; cursor: pointer;"
+        onmouseover="this.style.backgroundColor='#55a630'; this.style.color='white';"
+        onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Home Care</a>
+      <a href="nonveg.html"
+        style="background-color: transparent; color: black; text-decoration: none; transition: 0.3s; cursor: pointer;"
+        onmouseover="this.style.backgroundColor='#841c26'; this.style.color='white';"
+        onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Non Veg</a>
+      <a href="brandedfood.html"
+        style="background-color: transparent; color: black; text-decoration: none; transition: 0.3s; cursor: pointer;"
+        onmouseover="this.style.backgroundColor='#3c1742'; this.style.color='white';"
+        onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Branded Food</a>
+      <a href="beverages.html"
+        style="background-color: transparent; color: black; text-decoration: none; transition: 0.3s; cursor: pointer;"
+        onmouseover="this.style.backgroundColor='#708d81'; this.style.color='white';"
+        onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Beverages</a>
+      <a href="personalcare.html"
+        style="background-color: transparent; color: black; text-decoration: none; transition: 0.3s; cursor: pointer;"
+        onmouseover="this.style.backgroundColor='#0b3954'; this.style.color='white';"
+        onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Personal Care</a>
+      <a href="frozen.html"
+        style="background-color: transparent; color: black; text-decoration: none; transition: 0.3s; cursor: pointer;"
+        onmouseover="this.style.backgroundColor='#fcb0b3'; this.style.color='white';"
+        onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Frozen</a>
+      <a href="homekitchen.html"
+        style="background-color: transparent; color: black; text-decoration: none; transition: 0.3s; cursor: pointer;"
+        onmouseover="this.style.backgroundColor='#5b3758'; this.style.color='white';"
+        onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Home & Kitchen</a>
+      <a href="tools.html"
+        style="background-color: transparent; color: black; text-decoration: none; transition: 0.3s; cursor: pointer;"
+        onmouseover="this.style.backgroundColor='#fff275'; this.style.color='white';"
+        onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Tools</a>
+      <a href="accessories.html"
+        style="background-color: transparent; color: black; text-decoration: none; transition: 0.3s; cursor: pointer;"
+        onmouseover="this.style.backgroundColor='#7f2982'; this.style.color='white';"
+        onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Accessories</a>
+    </div>
+  </section>
+
+  <div class="category-heading">
+    <h1>Foodgrain, Oil & Masala</h1>
+    <p>Explore our wide range of foodgrains, oils, and masalas for your daily cooking needs.</p>
+  </div>
+
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="product-card">
+          <img src="food1.jpeg" alt="Rice">
+          <div class="card-body">
+            <h5>Basmati Rice</h5>
+            <p>Premium quality basmati rice for your daily meals.</p>
+            <div class="price">₹150.00</div>
+            <button class="btn btn-success" onclick="addToCart('Basmati Rice', 'rice.jpg')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="product-card">
+          <img src="food2.jpeg" alt="Cooking Oil">
+          <div class="card-body">
+            <h5>Sunflower Oil</h5>
+            <p>Healthy sunflower oil for cooking.</p>
+            <div class="price">₹120.00</div>
+            <button class="btn btn-success" onclick="addToCart('Sunflower Oil', 'oil.jpg')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="product-card">
+          <img src="food3.jpeg" alt="Masala">
+          <div class="card-body">
+            <h5>Garam Masala</h5>
+            <p>Authentic garam masala for flavorful dishes.</p>
+            <div class="price">₹80.00</div>
+            <button class="btn btn-success" onclick="addToCart('Garam Masala', 'masala.jpg')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="product-card">
+          <img src="food4.jpeg" alt="Wheat Flour">
+          <div class="card-body">
+            <h5>Wheat Flour</h5>
+            <p>Whole wheat flour for healthy rotis.</p>
+            <div class="price">₹50.00</div>
+            <button class="btn btn-success" onclick="addToCart('Wheat Flour', 'wheat.jpg')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="product-card">
+          <img src="food5.jpeg" alt="Toor Dal">
+          <div class="card-body">
+            <h5>Toor Dal</h5>
+            <p>High-quality toor dal for your dals and curries.</p>
+            <div class="price">₹90.00</div>
+            <button class="btn btn-success" onclick="addToCart('Toor Dal', 'dal.jpg')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="product-card">
+          <img src="food5.jpg" alt="Spices">
+          <div class="card-body">
+            <h5>Mixed Spices</h5>
+            <p>A blend of spices for everyday cooking.</p>
+            <div class="price">₹100.00</div>
+            <button class="btn btn-success" onclick="addToCart('Mixed Spices', 'spices.jpg')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer text-white pt-5"
+    style="background-image: url('Bg-footer-content\(2\).png'); background-size: cover; background-position: center; margin-top: 50px;">
+    <div class="container">
+      <div class="row text-center text-md-start">
+        <div class="col-md-3 mb-4 animate__animated animate__fadeInUp">
+          <h4 class="fw-bold">GrocDrop</h4>
+          <p>Your daily dose of fresh groceries delivered fast and safe. Trusted by thousands of households every day.</p>
+          <img src="logo.png" alt="GrocDrop Logo" class="img-fluid" style="max-width: 200px;">
+        </div>
+        <div class="col-md-3 mb-4 animate__animated animate__fadeInUp animate__delay-1s">
+          <h5 class="fw-semibold">Popular Brands</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="footer-link">Amul</a></li>
+            <li><a href="#" class="footer-link">Nestlé</a></li>
+            <li><a href="#" class="footer-link">Haldiram's</a></li>
+            <li><a href="#" class="footer-link">Aashirvaad</a></li>
+            <li><a href="#" class="footer-link">Tata Sampann</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 mb-4 animate__animated animate__fadeInUp animate__delay-2s">
+          <h5 class="fw-semibold">Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="footer-link">About Us</a></li>
+            <li><a href="#" class="footer-link">Blog</a></li>
+            <li><a href="#" class="footer-link">Careers</a></li>
+            <li><a href="#" class="footer-link">Privacy Policy</a></li>
+            <li><a href="#" class="footer-link">Terms & Conditions</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 mb-4 animate__animated animate__fadeInUp animate__delay-3s">
+          <h5 class="fw-semibold">Contact Us</h5>
+          <p><i class="bi bi-telephone-fill"></i> +91 98765 43210</p>
+          <p><i class="bi bi-envelope-fill"></i> <a href="mailto:support@grocdrop.in">support@grocdrop.in</a></p>
+          <h6 class="mt-3">Subscribe to our Newsletter</h6>
+          <form class="row g-2 align-items-center">
+            <div class="col-12 col-sm-8">
+              <input type="email" class="form-control" placeholder="Your email" required>
+            </div>
+            <div class="col-12 col-sm-4 d-grid">
+              <button class="btn btn-warning" type="submit">Subscribe</button>
+            </div>
+          </form>
+          <div class="social-icons mt-3">
+            <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-white me-3"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-4 animate__animated animate__fadeIn">
+        <div class="col text-center">
+          <h6 class="mb-2">We Accept</h6>
+          <img src="payment.jpeg" alt="Payment Methods" class="img-fluid" style="width:80px;height: 60px; object-fit: contain;">
+        </div>
+      </div>
+      <hr class="bg-light mt-4" />
+      <div class="text-center pb-3 animate__animated animate__fadeInUp animate__delay-1s">
+        <p class="mb-0">&copy; 2025 <strong>GrocDrop</strong>. All rights reserved. Designed with ❤️ for your grocery needs.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    let cart = [];
+
+    document.addEventListener('DOMContentLoaded', function () {
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: false,
+        mirror: true
+      });
+
+      try {
+        const savedCart = localStorage.getItem('cart');
+        if (savedCart) {
+          cart = JSON.parse(savedCart);
+          updateCartCount();
+          updateCartDisplay();
+        }
+      } catch (error) {
+        console.error('Error loading cart:', error);
+        cart = [];
+      }
+
+      updateFloatingCartVisibility();
+    });
+
+    function addToCart(name, image) {
+      try {
+        const existingItem = cart.find(item => item.name === name);
+
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cart.push({
+            name: name,
+            image: image,
+            quantity: 1
+          });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+        updateCartDisplay();
+
+        const cartDetails = document.getElementById('cart-details');
+        if (cartDetails) {
+          cartDetails.classList.remove('d-none');
+        }
+      } catch (error) {
+        console.error('Error adding to cart:', error);
+      }
+    }
+
+    function updateCartCount() {
+      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+      const mainCartCount = document.getElementById('cart-count');
+      const floatingCartCount = document.querySelector('#floating-cart-btn .badge');
+
+      if (mainCartCount) mainCartCount.textContent = count;
+      if (floatingCartCount) floatingCartCount.textContent = count;
+    }
+
+    function toggleCart(event) {
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      const cartDetails = document.getElementById('cart-details');
+      const floatingBtn = document.getElementById('floating-cart-btn');
+
+      if (cartDetails.classList.contains('d-none')) {
+        updateCartDisplay();
+        cartDetails.classList.remove('d-none');
+        if (window.innerWidth <= 600) {
+          floatingBtn.style.display = 'flex';
+        }
+      } else {
+        cartDetails.classList.add('d-none');
+        if (window.innerWidth <= 600 && window.scrollY <= document.querySelector('.navbar').offsetHeight) {
+          floatingBtn.style.display = 'none';
+        }
+      }
+    }
+
+    function updateCartDisplay() {
+      const cartItemsDiv = document.getElementById('cart-items');
+      if (!cartItemsDiv) return;
+
+      cartItemsDiv.innerHTML = '';
+
+      if (cart.length === 0) {
+        cartItemsDiv.innerHTML = '<div class="empty-cart-message"><p class="text-muted mb-0">Your cart is empty</p></div>';
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'mb-2 d-flex justify-content-between align-items-center';
+        itemDiv.innerHTML = `
+          <div class="d-flex align-items-center flex-grow-1">
+            <img src="${item.image}" alt="${item.name}" style="width: 40px; height: 40px; object-fit: cover;">
+            <div class="item-details ms-3">
+              <div class="fw-medium">${item.name}</div>
+              <small class="text-muted">Quantity: ${item.quantity}</small>
+            </div>
+          </div>
+          <button class="btn btn-sm btn-outline-danger ms-3" onclick="removeFromCart(${index})">
+            <i class="bi bi-trash"></i>
+          </button>
+        `;
+        cartItemsDiv.appendChild(itemDiv);
+      });
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
+      updateCartDisplay();
+
+      if (cart.length === 0) {
+        const cartDetails = document.getElementById('cart-details');
+        cartDetails.classList.add('d-none');
+      }
+    }
+
+    function proceedToCheckout(event) {
+      if (event) {
+        event.preventDefault();
+      }
+      document.body.style.animation = 'fadeOut 0.5s ease-out forwards';
+      setTimeout(() => {
+        window.location.href = "checkout.html";
+      }, 500);
+    }
+
+    function updateFloatingCartVisibility() {
+      const floatingBtn = document.getElementById('floating-cart-btn');
+      if (!floatingBtn) return;
+
+      if (window.innerWidth <= 600) {
+        floatingBtn.style.display = 'flex';
+        floatingBtn.style.opacity = '1';
+        floatingBtn.style.visibility = 'visible';
+      } else {
+        floatingBtn.style.display = 'none';
+        floatingBtn.style.opacity = '0';
+        floatingBtn.style.visibility = 'hidden';
+      }
+    }
+
+    window.addEventListener('resize', function () {
+      updateFloatingCartVisibility();
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      updateFloatingCartVisibility();
+    });
+
+    window.addEventListener('scroll', function () {
+      updateFloatingCartVisibility();
+    });
+  </script>
+</body>
+
+</html>

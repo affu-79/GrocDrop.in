@@ -1,0 +1,1852 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <title>GrocDrop.in</title>
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    .headerMenu {
+      display: flex;
+      align-items: center;
+      background-color: #f8f8f8;
+      padding: 0 10px;
+      padding-bottom: 5px;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    .categories {
+      margin-right: 15px;
+      padding: 8px 50px;
+      color: black;
+      border-right: 1px solid black;
+    }
+
+    .scrollmenu {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      flex-grow: 1;
+      padding-bottom: 10px;
+      width: 100%;
+    }
+
+    .scrollmenu::-webkit-scrollbar {
+      display: block;
+      height: 5px;
+    }
+
+    .scrollmenu::-webkit-scrollbar-thumb {
+      background-color: #888;
+      border-radius: 5px;
+    }
+
+    .scrollmenu a {
+      text-decoration: none;
+      padding: 10px 30px;
+      border-radius: 5px;
+      color: black;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      min-width: fit-content;
+      border: none;
+    }
+
+    .scrollmenu a:hover {
+      background: transparent;
+      transform: translateY(-3px);
+      box-shadow: none;
+    }
+
+    .scrollmenu a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #333;
+      transition: width 0.3s ease;
+    }
+
+    .scrollmenu a:hover::after {
+      width: 100%;
+    }
+
+    form .form-control.me-2 {
+      min-width: 400px;
+    }
+
+    .header_carousel {
+      max-width: 100%;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      padding: 0;
+      margin: 0;
+      animation: zoomIn 1.2s ease-out;
+    }
+
+    .carousel,
+    .carousel-inner,
+    .carousel-item {
+      height: 400px;
+    }
+
+    .carousel-image {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+      display: block;
+      margin: auto;
+    }
+
+    /********ADV ADV ADV *******/
+    .top-banner {
+      border: 1px solid #00000024;
+      padding: 30px 5px 30px 20px;
+      background: #fff;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      transition: all 0.4s ease;
+      transform: translateY(0);
+    }
+
+    .top-banner:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .top-banner img {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .top-banner h2 {
+      font-size: 18px;
+      color: red;
+      font-family: Norican, sans-serif;
+    }
+
+    .top-banner h3 {
+      font-size: 30px;
+      font-weight: 600;
+      line-height: 30px;
+      color: #484848;
+    }
+
+    .top-banner p {
+      margin: 0px;
+      font-size: 15px;
+      color: black;
+    }
+
+    /*******Category List Category List Category List*******/
+    .category-list {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      border: 1px dotted #000000;
+      border: 1px dashed #000000;
+      border-radius: 8px;
+      transition: all 0.4s ease;
+      transform: scale(1);
+    }
+
+    .category-list:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .category-list img {
+      width: 50%;
+    }
+
+    .category-list h2 {
+      font-weight: 500;
+      margin: 0px;
+      font-size: 30px;
+      font-family: sans-serif;
+    }
+
+    .category-list p {
+      font-size: 16px;
+      color: #f90000;
+      margin: 0px;
+    }
+
+    /*********HEADING SECTION HEADING*********/
+    .heading-section {
+      padding-bottom: 100px;
+    }
+
+    .heading-section h3 {
+      font-size: 30px;
+      text-align: center;
+      color: #b80818;
+      font-family: Norican, sans-serif;
+      margin: 0px;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .heading-section h2 {
+      text-align: center;
+      color: black;
+      font-size: 44px;
+      margin-bottom: 0px;
+      font-weight: bold;
+      font-family: 'Raleway', sans-serif;
+      letter-spacing: 0.5px;
+      word-spacing: 1px;
+      animation: fadeInUp 1s ease-out 0.2s backwards;
+    }
+
+    .heading-borders {
+      text-align: center;
+      justify-content: center;
+      display: flex;
+    }
+
+    .heading-borders span {
+      border: 1px solid red;
+      width: 5%;
+      margin-bottom: 20px;
+    }
+
+    @media screen and (max-width:768px) {
+      .heading-section h2 {
+        font-size: 30px;
+        margin-bottom: 5px;
+      }
+
+      .heading-borders span {
+        width: 8%;
+      }
+    }
+
+    @media screen and (max-width:500px) {
+      .heading-borders span {
+        width: 25%;
+      }
+
+      .heading-section h2 {
+        font-size: 30px;
+      }
+    }
+
+    /* ******PRODUCT LIST PRODUCT LIST******* */
+    .famous-product {
+      border: 1px solid lightgrey;
+      padding: 20px;
+      border-radius: 30px;
+      background: #fff;
+      color: black;
+      margin-bottom: 30px;
+      transition: all 0.4s ease;
+      transform: translateY(0);
+    }
+
+    .famous-product:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .famous-product img {
+      width: 100%;
+    }
+
+    .famous-product h2 {
+      font-size: 18px;
+      color: #F44336;
+    }
+
+    .famous-product h3 {
+      margin-bottom: 20px;
+      font-size: 26px;
+      font-weight: 600;
+      color: #4e4e4e;
+    }
+
+    .famous-product .price {
+      position: relative;
+    }
+
+    .famous-product .price h4 {
+      margin: 0px;
+    }
+
+    .famous-product .price span {
+      position: absolute;
+      top: 5px;
+      right: 0px;
+    }
+
+    .famous-product .price i {
+      width: 50px;
+      height: 50px;
+      border: 1px solid;
+      font-size: 22px;
+      padding: 14px;
+      text-align: center;
+      border-radius: 50px;
+      color: tomato;
+    }
+
+    /* /ADV Section ADV Section ADV Section/ */
+    .adv-left img {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .adv-right h2 {
+      color: #000000;
+      font-size: 35px;
+      font-family: Norican, sans-serif;
+    }
+
+    .adv-right h3 {
+      color: #fff;
+      font-size: 40px;
+      font-weight: bolder;
+    }
+
+    .adv-right p {
+      font-size: 16px;
+      margin-top: 20px;
+      font-family: Poppins, sans-serif;
+    }
+
+    .about-div {
+      border: 2px dotted #ffda86;
+      padding: 15px 20px;
+      font-size: 22px;
+      border-radius: 10px 0px;
+      text-align: center;
+      margin-bottom: 20px;
+      transition: all 0.4s ease;
+      transform: scale(1);
+    }
+
+    .about-div:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-div i {
+      color: #ffda86;
+      font-size: 34px;
+    }
+
+    .about-div p {
+      margin-top: 5px;
+      font-size: 17px;
+    }
+
+    /*******TESTIMONIAL SECTION TESTIMONIAL SECTION*******/
+    .testimonial {
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s ease;
+      transform: translateY(0);
+    }
+
+    .testimonial:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .heading-borders .selected {
+      display: inline-block;
+      width: 80px;
+      height: 4px;
+      background-color: #007bff;
+      margin-top: 10px;
+    }
+
+    .testimonial p {
+      font-size: 16px;
+      letter-spacing: 0.5px;
+      word-spacing: 1px;
+      line-height: 30px;
+      margin-bottom: 20px;
+      text-align: center;
+      color: black;
+    }
+
+    .testimonial .testimonial-img {
+      width: 80px;
+      float: left;
+    }
+
+    .testimonial img {
+      width: 70px !important;
+      height: 70px !important;
+      border-radius: 50px;
+    }
+
+    .testimonial .testimonial-user {
+      width: calc(100% - 100px);
+      float: left;
+      margin-top: 5px;
+    }
+
+    .testimonial h5 {
+      font-size: 32px;
+      font-family: Norican, sans-serif;
+      color: #000000;
+      margin: 0px;
+    }
+
+    .testimonial h6 {
+      font-size: 16px;
+      font-weight: 400;
+      color: #ea4020;
+    }
+
+    .owl-dots {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .owl-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1px solid #343434 !important;
+      margin-right: 10px;
+    }
+
+    .owl-carousel .owl-dots .active {
+      border: 1px solid #ea4020 !important;
+      background: #ea4020;
+    }
+
+    .owl-nav {
+      position: absolute;
+      top: 35%;
+      width: 100%;
+      float: left;
+    }
+    @keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+    .owl-nav .owl-prev {
+      background: #00000059 !important;
+      height: 40px;
+      width: 40px;
+      color: white !important;
+      border-radius: 50%;
+      font-size: 36px !important;
+      line-height: 40px !important;
+    }
+
+    .owl-nav .owl-next {
+      float: right;
+      background: #00000059 !important;
+      height: 40px;
+      width: 40px;
+      color: white !important;
+      border-radius: 50%;
+      font-size: 36px !important;
+      line-height: 40px !important;
+    }
+
+    .footer {
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(3px);
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .footer>div {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .footer.visible>div {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .footer-link {
+      color: #bbb;
+      text-decoration: none;
+      transition: 0.3s;
+      position: relative;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
+    }
+
+    .footer.visible .footer-link {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .social-icons a {
+      font-size: 1.3rem;
+      transition: transform 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
+    }
+
+    .footer.visible .social-icons a {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .footer img {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
+    }
+
+    .footer.visible img {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .bi-plus:hover {
+      background-color: transparent;
+    }
+
+    .card .btn-outline-success:hover {
+      background-color: #198754;
+      border-color: #198754;
+    }
+
+    .card .btn-outline-success:hover .bi-plus {
+      color: white;
+    }
+
+    .btn-outline-success:not(.card .btn-outline-success):hover {
+      background-color: #198754;
+      color: white;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes zoomIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* Add animation classes for scroll animations */
+    .fade-slide-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-slide-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-slide-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .footer-slide-up {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .visible {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+    /* Responsive Cart Styles */
+    #cart-details {
+      position: absolute;
+      right: 0;
+      top: 100%;
+      background: white;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+      min-width: 300px;
+    }
+
+    /* Mobile Cart Styles */
+    @media (max-width: 768px) {
+      #cart-details {
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        min-width: 100%;
+        max-height: 80vh;
+        overflow-y: auto;
+        border-radius: 20px 20px 0 0;
+        box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+        margin: 0;
+        /* Hide scrollbar but keep functionality */
+        scrollbar-width: none;
+        /* Firefox */
+        -ms-overflow-style: none;
+        /* IE and Edge */
+      }
+
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      #cart-details::-webkit-scrollbar {
+        display: none;
+      }
+
+      #cart-items {
+        padding: 1rem !important;
+        overflow-y: auto;
+        scrollbar-width: none;
+        /* Firefox */
+        -ms-overflow-style: none;
+        /* IE and Edge */
+      }
+
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      #cart-items::-webkit-scrollbar {
+        display: none;
+      }
+
+      .cart-header {
+        position: sticky;
+        top: 0;
+        background: white;
+        z-index: 1;
+        padding: 1rem !important;
+      }
+
+      #cart-items .mb-2 {
+        padding: 0.75rem;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 0.75rem !important;
+      }
+
+      #cart-items img {
+        width: 60px !important;
+        height: 60px !important;
+        margin-right: 1rem !important;
+      }
+
+      #cart-items .item-details {
+        flex: 1;
+      }
+
+      .cart-footer {
+        position: sticky;
+        bottom: 0;
+        background: white;
+        padding: 1rem !important;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .empty-cart-message {
+        padding: 2rem !important;
+        text-align: center;
+      }
+    }
+
+    /* Update Floating Cart Button Styles */
+    .floating-cart-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #0d6efd;
+      color: white;
+      border: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .floating-cart-btn i {
+      font-size: 24px;
+    }
+
+    .floating-cart-btn .badge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      font-size: 14px;
+      padding: 4px 8px;
+      border-radius: 50%;
+      background-color: #dc3545;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .floating-cart-btn:hover {
+      transform: scale(1.05);
+      background-color: #0b5ed7;
+    }
+
+    .floating-cart-btn:active {
+      transform: scale(0.95);
+    }
+
+    @media screen and (max-width: 600px) {
+      .floating-cart-btn {
+        display: flex !important;
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  </style>
+
+
+  </style>
+</head>
+
+<body id="top">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <section class="header_menu" id="header_menu">
+    <div class="container-fluid px-0 shadow">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">GrocDrop.in</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="login.html">Login / Register</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  About GrocDrop
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="about.html">About Us</a></li>
+                  <li><a class="dropdown-item" href="brands.html">Brands</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="help.html">Help & Support</a></li>
+                </ul>
+              </li>
+
+            </ul>
+            <form class="d-flex flex-wrap align-items-center justify-content-center gap-2" role="search">
+              <div class="flex-grow-1" style="min-width: 250px; max-width: 100%;">
+                <input class="form-control w-100" type="search" placeholder="Search for Products, Brands and more"
+                  aria-label="Search" style="min-width: 250px;">
+              </div>
+
+              <div class="d-flex gap-2">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+                <div class="position-relative">
+                  <button type="button" id="cart-button" class="btn btn-outline-primary" onclick="toggleCart(event)">
+                    <i class="bi bi-cart-fill me-2"></i>
+                    <span>Cart</span>
+                    <span class="badge bg-danger" id="cart-count">0</span>
+                  </button>
+                  <div id="cart-details" class="d-none">
+                    <div class="cart-header p-3 border-bottom">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Your Cart</h5>
+                        <button type="button" class="btn-close" onclick="toggleCart(event)"></button>
+                      </div>
+                    </div>
+                    <div id="cart-items" class="p-3"></div>
+                    <div class="cart-footer p-3 border-top">
+                      <button class="btn btn-success w-100" onclick="proceedToCheckout(event)">Proceed to Checkout</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </nav>
+      <!-- Add the floating cart button right after the navbar -->
+      <button type="button" id="floating-cart-btn" class="floating-cart-btn" onclick="toggleCart(event)">
+        <i class="bi bi-cart-fill"></i>
+        <span class="badge">0</span>
+      </button>
+    </div>
+  </section>
+
+  <section class="headerMenu">
+    <div class="categories">All Categories</div>
+    <div class="scrollmenu">
+      <a href="food.html"
+        style="background-color:#f4a261; color: black; text-decoration: none; transition: 0.3s; cursor: pointer;"
+        onmouseover="this.style.backgroundColor='orange'; this.style.color='white'; " onclick="food();"
+        onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';"> Foodgrain, Oil & Masala</a>
+
+      <a href="fruits.html"
+        style="background-color: transparent; color: black; text-decoration: none; transition: 0.3s; cursor: pointer;"
+        onmouseover="this.style.backgroundColor='#560bad'; this.style.color='white';"
+        onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Fruits & Vegetables</a>
+      <a href="dairy.html"
+        style="background-color: transparent; color: black; text-decoration: none; transition: 0.3s; cursor: pointer;"
+        onmouseover="this.style.backgroundColor='#7fdeff'; this.style.color='white';"
+        onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Dairy & Bakery</a>
+      <a href="homecare.html"
+        style="background-color: transparent; color: black; text-decoration: none; transition: 0.3s; cursor: pointer;"
+        onmouseover="this.style.backgroundColor='#55a630'; this.style.color='white';"
+        onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Home Care</a>
+      <a href="nonveg.html"
+        style="background-color: transparent; color: black; text-decoration: none; transition: 0.3s; cursor: pointer;"
+        onmouseover="this.style.backgroundColor='#841c26'; this.style.color='white';"
+        onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Non Veg</a>
+
+      <a href="brandedfood.html"
+        style="background-color: transparent; color: black; text-decoration: none; transition: 0.3s; cursor: pointer;"
+        onmouseover="this.style.backgroundColor='#3c1742'; this.style.color='white';"
+        onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Branded Food</a>
+
+      <a href="beverages.html"
+        style="background-color: transparent; color: black; text-decoration: none; transition: 0.3s; cursor: pointer;"
+        onmouseover="this.style.backgroundColor='#708d81'; this.style.color='white';"
+        onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Bevrages</a>
+      <a href="personalcare.html"
+        style="background-color: transparent; color: black; text-decoration: none; transition: 0.3s; cursor: pointer;"
+        onmouseover="this.style.backgroundColor='#0b3954'; this.style.color='white';"
+        onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Personal Care</a>
+      <a href="frozen.html"
+        style="background-color: transparent; color: black; text-decoration: none; transition: 0.3s; cursor: pointer;"
+        onmouseover="this.style.backgroundColor='#fcb0b3'; this.style.color='white';"
+        onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Fozen </a>
+      <a href="homekitchen.html"
+        style="background-color: transparent; color: black; text-decoration: none; transition: 0.3s; cursor: pointer;"
+        onmouseover="this.style.backgroundColor='#5b3758'; this.style.color='white';"
+        onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Home & Kitchen</a>
+      <a href="tools.html"
+        style="background-color: transparent; color: black; text-decoration: none; transition: 0.3s; cursor: pointer;"
+        onmouseover="this.style.backgroundColor='#fff275'; this.style.color='white';"
+        onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Tools</a>
+      <a href="accesories.html"
+        style="background-color: transparent; color: black; text-decoration: none; transition: 0.3s; cursor: pointer;"
+        onmouseover="this.style.backgroundColor='#7f2982'; this.style.color='white';"
+        onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Accesories</a>
+
+    </div>
+  </section>
+
+
+
+  <section class="header_carousel">
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="one.jpg" class="d-block w-100 carousel-image" alt="Slide 1">
+        </div>
+        <div class="carousel-item">
+          <img src="two.jpg" class="d-block w-100 carousel-image" alt="Slide 2">
+        </div>
+        <div class="carousel-item">
+          <img src="three.jpg" class="d-block w-100 carousel-image" alt="Slide 3">
+        </div>
+        <div class="carousel-item">
+          <img src="four.jpg" class="d-block w-100 carousel-image" alt="Slide 4">
+        </div>
+        <div class="carousel-item">
+          <img src="five.jpg" class="d-block w-100 carousel-image" alt="Slide 5">
+        </div>
+      </div>
+      <button class="carousel-control-prev custom-btn" type="button" data-bs-target="#carouselExampleAutoplaying"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next custom-btn" type="button" data-bs-target="#carouselExampleAutoplaying"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
+  <br>
+  <!---------ADV Section ADV Section-------->
+  <div class="container-fluid  main-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="top-banner">
+            <div class="row">
+              <div class="col-md-7">
+                <h2>SAVE 15%</h2>
+                <h3>Fruits</h3>
+                <p>fresh and juicy fruits</p>
+              </div>
+              <div class="col-md-5">
+                <div>
+                  <img src="fruit.jpeg">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="top-banner">
+            <div class="row">
+              <div class="col-md-7">
+                <h2>SAVE 23%</h2>
+                <h3>Skin Care Products</h3>
+                <p>Brands Like Minimalist,MamaEarth</p>
+              </div>
+              <div class="col-md-5">
+                <div>
+                  <img src="skincare2.jpeg">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-12">
+          <div class="top-banner">
+            <div class="row">
+              <div class="col-md-7">
+                <h2>SAVE 30%</h2>
+                <h3>households</h3>
+                <p>from brush to soap</p>
+              </div>
+              <div class="col-md-5">
+                <div>
+                  <img src="household.jpeg">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="top-banner">
+            <div class="row">
+              <div class="col-lg-7">
+                <h2>SAVE 12%</h2>
+                <h3>Dry Fruits & Nuts</h3>
+                <p>luxury, Tasty imported Cashews & walnuts</p>
+              </div>
+              <div class="col-lg-5">
+                <div>
+                  <img src="Nuts.jpeg">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="top-banner">
+            <div class="row">
+              <div class="col-lg-7">
+                <h2>SAVE 10%</h2>
+                <h3>Milk & Dairy Products </h3>
+                <p>Healthy and protein rich milk and dairy products</p>
+              </div>
+              <div class="col-lg-5">
+                <div>
+                  <img src="dairy.jpeg">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <h2>
+    <center>Categories</center>
+  </h2>
+  <br>
+  <!---------Category List Category List Category List--------->
+  <div class="container-fluid main-section bg-color">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-3 col-6">
+          <div class="category-list">
+            <img src="amul.jpeg">
+            <h2>Butter</h2>
+            <p>Amul Products</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-6">
+          <div class="category-list">
+            <img src="bisleriwater.jpeg">
+            <h2>Drinking Water</h2>
+            <p>Bisleri</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-6">
+          <div class="category-list">
+            <img src="drshethSunscreen.jpeg">
+            <h2>SPF+ Suscreen</h2>
+            <p>Dr.Sheths</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-6">
+          <div class="category-list">
+            <img src="haldiramSancks.jpeg">
+            <h2>Bhujiya </h2>
+            <p>HalidiRam Snacks</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-6">
+          <div class="category-list">
+            <img src="liceouschicken.jpeg">
+            <h2>Chicken</h2>
+            <p>Liceous Chicken</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-6">
+          <div class="category-list">
+            <img src="maggi.jpeg">
+            <h2>Noodels</h2>
+            <p>2 minutes Maggi</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-6">
+          <div class="category-list">
+            <img src="mamaearthShampoo.jpeg">
+            <h2>Hair Shampoo</h2>
+            <p>MamaEarth</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-6">
+          <div class="category-list">
+            <img src="tatasalt.jpeg">
+            <h2>Salt</h2>
+            <p>Tata Salt</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!---------PRODUCT LIST PRODUCT LIST-------->
+  <div class="container-fluid main-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="heading-section text-center my-4">
+            <h3>Our Top Sell</h3>
+            <h2>Checkout Our Top Selling Items</h2>
+            <div class="heading-borders">
+              <span class="selected"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Responsive Card Grid -->
+      <div class="row g-4">
+        <!-- First product card -->
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="card h-100">
+            <img src="c1.jpeg" class="card-img-top" alt="fruits">
+            <div class="card-body text-center">
+              <h6 class="card-title">Fruits</h6>
+              <div class="d-flex justify-content-between align-items-center px-3">
+                <span class="price">Rs 60.00</span>
+                <button type="button" class="btn btn-sm btn-outline-success" onclick="addToCart('Fruits', 'c1.jpeg')">
+                  <i class="bi bi-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Second product card -->
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="card h-100">
+            <img src="c2.jpeg" class="card-img-top" alt="Vegetables">
+            <div class="card-body text-center">
+              <h6 class="card-title">Vegetables</h6>
+              <div class="d-flex justify-content-between align-items-center px-3">
+                <span class="price">Rs 120.00</span>
+                <button type="button" class="btn btn-sm btn-outline-success"
+                  onclick="addToCart('Vegetables', 'c2.jpeg')">
+                  <i class="bi bi-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Third product card -->
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="card h-100">
+            <img src="c3.jpeg" class="card-img-top" alt="Milk" style="margin-left:90px; height:270px; width:230px;">
+            <div class="card-body text-center">
+              <h6 class="card-title">Milk</h6>
+              <div class="d-flex justify-content-between align-items-center px-3">
+                <span class="price">Rs 40.00</span>
+                <button type="button" class="btn btn-sm btn-outline-success" onclick="addToCart('Milk', 'c3.jpeg')">
+                  <i class="bi bi-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fourth product card -->
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="card h-100">
+            <img src="c4.jpeg" class="card-img-top" alt="Coke"
+              style="height: 270px; width:min-content; align-items: center;margin-left: 50px;">
+            <div class="card-body text-center">
+              <h6 class="card-title">Coke</h6>
+              <div class="d-flex justify-content-between align-items-center px-3">
+                <span class="price">Rs 55.00</span>
+                <button type="button" class="btn btn-sm btn-outline-success" onclick="addToCart('Coke', 'c4.jpeg')">
+                  <i class="bi bi-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fifth product card -->
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="card h-100">
+            <img src="c5.jpeg" class="card-img-top" alt="Lays"
+              style="height: 270px; width:min-content; align-items: center;margin-left: 40px;">
+            <div class="card-body text-center">
+              <h6 class="card-title">Lays Potato Chips</h6>
+              <div class="d-flex justify-content-between align-items-center px-3">
+                <span class="price">Rs 30.00</span>
+                <button type="button" class="btn btn-sm btn-outline-success"
+                  onclick="addToCart('Lays Chips', 'c5.jpeg')">
+                  <i class="bi bi-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sixth product card -->
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="card h-100">
+            <img src="c6.jpeg" class="card-img-top" alt="Dark Fantasy"
+              style="height: 270px; width:min-content; align-items: center;margin-left: 40px;">
+            <div class="card-body text-center">
+              <h6 class="card-title">Dark Fantasy Cookies</h6>
+              <div class="d-flex justify-content-between align-items-center px-3">
+                <span class="price">Rs 70.00</span>
+                <button type="button" class="btn btn-sm btn-outline-success"
+                  onclick="addToCart('Dark Fantasy Cookies', 'c6.jpeg')">
+                  <i class="bi bi-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Seventh product card -->
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="card h-100">
+            <img src="c7.jpeg" class="card-img-top" alt="MamyPoko"
+              style="height: 270px; width:min-content; align-items: center;margin-left: 40px;">
+            <div class="card-body text-center">
+              <h6 class="card-title">MamyPoko Pants Mini</h6>
+              <div class="d-flex justify-content-between align-items-center px-3">
+                <span class="price">Rs 80.00</span>
+                <button type="button" class="btn btn-sm btn-outline-success"
+                  onclick="addToCart('MamyPoko Pants', 'c7.jpeg')">
+                  <i class="bi bi-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Eighth product card -->
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="card h-100">
+            <img src="c8.jpeg" class="card-img-top" alt="Hair Dryer"
+              style="height: 270px; width:min-content; align-items: center;margin-left: 80px;">
+            <div class="card-body text-center">
+              <h6 class="card-title">Philips Hair Dryer</h6>
+              <div class="d-flex justify-content-between align-items-center px-3">
+                <span class="price">Rs 889.00</span>
+                <button type="button" class="btn btn-sm btn-outline-success"
+                  onclick="addToCart('Philips Hair Dryer', 'c8.jpeg')">
+                  <i class="bi bi-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ninth product card -->
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="card h-100">
+            <img src="c9.jpeg" class="card-img-top" alt="Headphones"
+              style="height: 270px; width:min-content; align-items: center;margin-left: 30px;">
+            <div class="card-body text-center">
+              <h6 class="card-title">Headphones</h6>
+              <div class="d-flex justify-content-between align-items-center px-3">
+                <span class="price">Rs 3000.00</span>
+                <button type="button" class="btn btn-sm btn-outline-success"
+                  onclick="addToCart('Headphones', 'c9.jpeg')">
+                  <i class="bi bi-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <hr>
+  <br>
+  <!---------ADV Section ADV Section ADV Section --------->
+  <div class="container-fluid main-section bg-color">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="adv-left">
+            <img src="output.jpg" style="width: 340px; height:auto; object-fit: contain; border-radius: 50%; ">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="adv-right">
+            <h2 style="font-size: 50px;">Fastest Delivery</h2>
+            <h3 style="color: rgb(206, 21, 21);">Your Groceries , Delivered to your Doorstep</h3>
+            <p>Web design refers to the design of websites that Delivery in are displayed on the internet.</p>
+            <br>
+            <div class="row">
+              <div class="col-lg-4 col-md-4">
+                <div class="about-div">
+                  <i class="fa fa-home"></i>
+                  <p>Delivery in 30 minutes.</p>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4">
+                <div class="about-div">
+                  <i class="fa fa-hourglass"></i>
+                  <p>Delivery in 30 minutes.</p>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4">
+                <div class="about-div">
+                  <i class="fa fa-birthday-cake"></i>
+                  <p>Delivery in 30 minutes.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <hr>
+  <br>
+
+  <!-- Testimonial Carousel Section -->
+  <div class="container-fluid main-section py-5 bg-light">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-12 text-center">
+          <h3 class="text-muted">Our testimonials</h3>
+          <h2>What Our Clients Say</h2>
+          <div class="heading-borders">
+            <span class="selected"></span>
+          </div>
+        </div>
+      </div>
+
+      <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="testimonial text-center">
+              <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+              <img src="elonMusk.jpeg" class="rounded-circle mb-3" style="width: 100px; height: 100px;">
+              <h5>Elon Musk</h5>
+              <h6 class="text-muted">Founder & CEO At SpaceX</h6>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="testimonial text-center">
+              <p class="lead">grocdrop website using HTML CSS and JScode.</p>
+              <img src="sundarPichai.jpeg" class="rounded-circle mb-3" style="width: 100px; height: 100px;">
+              <h5>Sundar Pichai</h5>
+              <h6 class="text-muted">CEO At Alphabet</h6>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="testimonial text-center">
+              <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elitolorem. Sint iatur..</p>
+              <img src="dolandDuck.jpeg" class="rounded-circle mb-3" style="width: 100px; height: 100px;">
+              <h5> Donald Trump</h5>
+              <h6 class="text-muted">President And MovieStar America</h6>
+            </div>
+          </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <footer class="footer text-white pt-5"
+    style="background-image: url('Bg-footer-content\(2\).png'); background-size: cover; background-position: center; margin-top: -50px;">
+    <div class="container">
+      <div class="row text-center text-md-start">
+
+        <div class="col-md-3 mb-4 animate__animated animate__fadeInUp">
+          <h4 class="fw-bold">GrocDrop</h4>
+          <p>Your daily dose of fresh groceries delivered fast and safe. Trusted by thousands of households every day.
+          </p>
+          <img src="logo.png" alt="GrocDrop Logo" class="img-fluid" style="max-width: 200px;">
+        </div>
+        <div class="col-md-3 mb-4 animate__animated animate__fadeInUp animate__delay-1s">
+          <h5 class="fw-semibold">Popular Brands</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="footer-link">Amul</a></li>
+            <li><a href="#" class="footer-link">Nestlé</a></li>
+            <li><a href="#" class="footer-link">Haldiram's</a></li>
+            <li><a href="#" class="footer-link">Aashirvaad</a></li>
+            <li><a href="#" class="footer-link">Tata Sampann</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 mb-4 animate__animated animate__fadeInUp animate__delay-2s">
+          <h5 class="fw-semibold">Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="footer-link">About Us</a></li>
+            <li><a href="#" class="footer-link">Blog</a></li>
+            <li><a href="#" class="footer-link">Careers</a></li>
+            <li><a href="#" class="footer-link">Privacy Policy</a></li>
+            <li><a href="#" class="footer-link">Terms & Conditions</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-3 mb-4 animate__animated animate__fadeInUp animate__delay-3s">
+          <h5 class="fw-semibold">Contact Us</h5>
+          <p><i class="bi bi-telephone-fill"></i> +91 98765 43210</p>
+          <p><i class="bi bi-envelope-fill"></i> support@grocdrop.com</p>
+
+          <h6 class="mt-3">Subscribe to our Newsletter</h6>
+          <form class="row g-2 align-items-center">
+            <div class="col-12 col-sm-8">
+              <input type="email" class="form-control" placeholder="Your email" required>
+            </div>
+            <div class="col-12 col-sm-4 d-grid">
+              <button class="btn btn-warning" type="submit">Subscribe</button>
+            </div>
+          </form>
+
+          <div class="social-icons mt-3">
+            <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-white me-3"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-4 animate__animated animate__fadeIn">
+        <div class="col text-center">
+          <h6 class="mb-2">We Accept</h6>
+          <img src="payment.jpeg" alt="Payment Methods" class="img-fluid" style="width:80px;height: 60px;
+        object-fit: contain;">
+        </div>
+      </div>
+      <hr class="bg-light mt-4" />
+      <div class="text-center pb-3 animate__animated animate__fadeInUp animate__delay-1s">
+        <p class="mb-0">&copy; 2025 <strong>GrocDrop</strong>. All rights reserved. Designed with ❤️ for your grocery
+          needs.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Cart Modal -->
+  <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Your Cart</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div id="cartItemsContainer" class="row g-3"></div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-success" onclick="proceedToCheckout()">Proceed to Checkout</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    // Initialize cart
+    let cart = [];
+
+    // Load cart from localStorage and initialize animations on page load
+    document.addEventListener('DOMContentLoaded', function () {
+      // Initialize AOS
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: false,
+        mirror: true
+      });
+
+      // Add animation classes to elements
+      animateElements();
+
+      // Add scroll animation classes to specific sections
+      addScrollAnimationClasses();
+
+      // Initialize cart
+      try {
+        const savedCart = localStorage.getItem('cart');
+        if (savedCart) {
+          cart = JSON.parse(savedCart);
+          console.log('Loaded cart:', cart);
+          updateCartCount();
+          updateCartDisplay();
+        }
+      } catch (error) {
+        console.error('Error loading cart:', error);
+        cart = [];
+      }
+
+      // Initialize floating cart button visibility
+      updateFloatingCartVisibility();
+    });
+
+    function addScrollAnimationClasses() {
+      // Categories section - slide from left
+      const categoryLists = document.querySelectorAll('.category-list');
+      categoryLists.forEach((item, index) => {
+        item.classList.add('fade-slide-left');
+        item.style.transitionDelay = `${index * 0.1}s`;
+      });
+
+      // Top selling items - slide from right
+      const cards = document.querySelectorAll('.card');
+      cards.forEach((card, index) => {
+        card.classList.add('fade-slide-right');
+        card.style.transitionDelay = `${index * 0.1}s`;
+      });
+
+      // Advertisement section - slide from left
+      const advLeft = document.querySelector('.adv-left');
+      if (advLeft) {
+        advLeft.classList.add('fade-slide-left');
+      }
+
+      // Advertisement text - slide from right
+      const advRight = document.querySelector('.adv-right');
+      if (advRight) {
+        advRight.classList.add('fade-slide-right');
+      }
+
+      // Footer elements - slide up
+      const footerColumns = document.querySelectorAll('.footer .col-md-3');
+      footerColumns.forEach((column, index) => {
+        column.classList.add('footer-slide-up');
+        column.style.transitionDelay = `${index * 0.2}s`;
+      });
+
+      // Footer social icons
+      const socialIcons = document.querySelectorAll('.social-icons a');
+      socialIcons.forEach((icon, index) => {
+        icon.classList.add('footer-slide-up');
+        icon.style.transitionDelay = `${0.8 + (index * 0.1)}s`;
+      });
+
+      // Footer payment section
+      const paymentSection = document.querySelector('.footer .row.mt-4');
+      if (paymentSection) {
+        paymentSection.classList.add('footer-slide-up');
+        paymentSection.style.transitionDelay = '1.2s';
+      }
+
+      // Footer copyright
+      const copyright = document.querySelector('.footer .text-center.pb-3');
+      if (copyright) {
+        copyright.classList.add('footer-slide-up');
+        copyright.style.transitionDelay = '1.4s';
+      }
+
+      // Footer animations
+      const footer = document.querySelector('.footer');
+      if (footer) {
+        footer.classList.add('footer-slide-up');
+
+        // Animate all footer elements with staggered delays
+        const footerElements = footer.querySelectorAll('div, p, h4, h5, h6, img, a, form, button, input, i, ul, li');
+        footerElements.forEach((element, index) => {
+          element.style.transitionDelay = `${0.2 + (index * 0.1)}s`;
+        });
+
+        // Special handling for social icons
+        const socialIconsFooter = footer.querySelectorAll('.social-icons a');
+        socialIconsFooter.forEach((icon, index) => {
+          icon.style.transitionDelay = `${0.8 + (index * 0.1)}s`;
+        });
+
+        // Animate footer images
+        const footerImages = footer.querySelectorAll('img');
+        footerImages.forEach((img, index) => {
+          img.style.transitionDelay = `${1.2 + (index * 0.1)}s`;
+        });
+      }
+    }
+
+    function animateElements() {
+      // Animate cards
+      const cards = document.querySelectorAll('.card');
+      cards.forEach((card, index) => {
+        card.style.transitionDelay = `${index * 0.1}s`;
+        card.classList.add('visible');
+      });
+
+      // Animate top banners
+      const banners = document.querySelectorAll('.top-banner');
+      banners.forEach((banner, index) => {
+        banner.style.animation = `fadeInUp 0.8s ease-out ${index * 0.2}s backwards`;
+      });
+
+      // Animate category lists
+      const categories = document.querySelectorAll('.category-list');
+      categories.forEach((category, index) => {
+        category.style.animation = `fadeInUp 0.8s ease-out ${index * 0.1}s backwards`;
+      });
+
+      // Animate testimonials
+      const testimonials = document.querySelectorAll('.testimonial');
+      testimonials.forEach((testimonial, index) => {
+        testimonial.style.animation = `fadeInUp 0.8s ease-out ${index * 0.2}s backwards`;
+      });
+
+      // Animate footer elements
+      const footerElements = document.querySelectorAll('.footer > div > div');
+      footerElements.forEach((element, index) => {
+        element.style.animation = `fadeInUp 0.8s ease-out ${index * 0.2}s backwards`;
+      });
+    }
+
+    // Update scroll event listener
+    window.addEventListener('scroll', function () {
+      const elements = document.querySelectorAll('.fade-slide-left, .fade-slide-right, .fade-slide-up, .footer-slide-up');
+      elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        const triggerPoint = windowHeight * 0.8;
+
+        if (elementPosition < triggerPoint) {
+          element.classList.add('visible');
+
+          // Special handling for footer
+          if (element.classList.contains('footer')) {
+            const footerElements = element.querySelectorAll('div, p, h4, h5, h6, img, a, form, button, input, i, ul, li');
+            footerElements.forEach(el => el.classList.add('visible'));
+          }
+        }
+      });
+    });
+
+    function addToCart(name, image) {
+      try {
+        console.log('Adding to cart:', name, image); // Debug log
+
+        // Find if item exists in cart
+        const existingItem = cart.find(item => item.name === name);
+
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cart.push({
+            name: name,
+            image: image,
+            quantity: 1
+          });
+        }
+
+        // Save to localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        // Update UI
+        updateCartCount();
+        updateCartDisplay();
+
+        // Show cart dropdown
+        const cartDetails = document.getElementById('cart-details');
+        if (cartDetails) {
+          cartDetails.classList.remove('d-none');
+        }
+
+        // Animate cart buttons
+        animateCartButtons();
+
+        console.log('Current cart:', cart); // Debug log
+      } catch (error) {
+        console.error('Error adding to cart:', error);
+      }
+    }
+
+    function updateCartCount() {
+      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+      // Update both cart count displays
+      const mainCartCount = document.getElementById('cart-count');
+      const floatingCartCount = document.querySelector('#floating-cart-btn .badge');
+
+      if (mainCartCount) mainCartCount.textContent = count;
+      if (floatingCartCount) floatingCartCount.textContent = count;
+    }
+
+    function toggleCart(event) {
+  if (event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+  const cartDetails = document.getElementById('cart-details');
+  const floatingBtn = document.getElementById('floating-cart-btn');
+
+  if (cartDetails.classList.contains('d-none')) {
+    updateCartDisplay();
+    cartDetails.classList.remove('d-none');
+    if (window.innerWidth <= 600) {
+      floatingBtn.style.display = 'flex';
+    }
+  } else {
+    cartDetails.classList.add('d-none');
+    if (window.innerWidth <= 600 && window.scrollY <= document.querySelector('.navbar').offsetHeight) {
+      floatingBtn.style.display = 'none';
+    }
+  }
+}
+
+    function updateCartDisplay() {
+      const cartItemsDiv = document.getElementById('cart-items');
+      if (!cartItemsDiv) return;
+
+      cartItemsDiv.innerHTML = '';
+
+      if (cart.length === 0) {
+        cartItemsDiv.innerHTML = '<div class="empty-cart-message"><p class="text-muted mb-0">Your cart is empty</p></div>';
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'mb-2 d-flex justify-content-between align-items-center';
+        itemDiv.innerHTML = `
+          <div class="d-flex align-items-center flex-grow-1">
+            <img src="${item.image}" alt="${item.name}" style="width: 40px; height: 40px; object-fit: cover;">
+            <div class="item-details ms-3">
+              <div class="fw-medium">${item.name}</div>
+              <small class="text-muted">Quantity: ${item.quantity}</small>
+            </div>
+          </div>
+          <button class="btn btn-sm btn-outline-danger ms-3" onclick="removeFromCart(${index})">
+            <i class="bi bi-trash"></i>
+          </button>
+        `;
+        cartItemsDiv.appendChild(itemDiv);
+      });
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
+      updateCartDisplay();
+
+      // Hide cart if empty
+      if (cart.length === 0) {
+        const cartDetails = document.getElementById('cart-details');
+        cartDetails.classList.add('d-none');
+      }
+    }
+
+    function proceedToCheckout(event) {
+  if (event) {
+    event.preventDefault();
+  }
+  document.body.style.animation = 'fadeOut 0.5s ease-out forwards';
+  setTimeout(() => {
+    window.location.href = "checkout.html";
+  }, 500);
+}
+
+    window.addEventListener('DOMContentLoaded', function () {
+      // Add fade in animation to the entire page
+      document.body.style.animation = 'fadeIn 1s ease-out forwards';
+
+      if (!localStorage.getItem('hasSeenAlert')) {
+        alert('👋 Welcome to GrocDrop.in! Your one-stop solution for all your grocery needs. Enjoy shopping!');
+        localStorage.setItem('hasSeenAlert', 'true');
+      }
+    });
+
+    const carousel = document.querySelector('#testimonialCarousel');
+    if (carousel) {
+      const bsCarousel = new bootstrap.Carousel(carousel, {
+        interval: 3000,
+        ride: 'carousel',
+        pause: false,
+        wrap: true
+      });
+    }
+
+    // Update floating cart visibility function
+    function updateFloatingCartVisibility() {
+      const floatingBtn = document.getElementById('floating-cart-btn');
+      if (!floatingBtn) return;
+
+      if (window.innerWidth <= 600) {
+        floatingBtn.style.display = 'flex';
+        floatingBtn.style.opacity = '1';
+        floatingBtn.style.visibility = 'visible';
+      } else {
+        floatingBtn.style.display = 'none';
+        floatingBtn.style.opacity = '0';
+        floatingBtn.style.visibility = 'hidden';
+      }
+    }
+
+    // Add resize listener to handle responsive behavior
+    window.addEventListener('resize', function () {
+      updateFloatingCartVisibility();
+    });
+
+    // Call on page load and scroll
+    document.addEventListener('DOMContentLoaded', function () {
+      updateFloatingCartVisibility();
+    });
+
+    window.addEventListener('scroll', function () {
+      updateFloatingCartVisibility();
+    });
+  </script>
+</body>
+
+</html>

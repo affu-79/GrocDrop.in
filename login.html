@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GrocDrop.in</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-color: #28a745;
+      --primary-hover: #218838;
+      --text-dark: #343a40;
+      --text-light: #6c757d;
+      --bg-light: #f8f9fa;
+      --card-bg: rgba(255, 255, 255, 0.85);
+      --card-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      --transition-speed: 0.3s;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+      background-color: var(--bg-light);
+    }
+
+    /* Main container with split design */
+    .login-container {
+      display: flex;
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Left side - Brand section */
+    .brand-section {
+      flex: 1;
+      background: url('loginbg.jpg') no-repeat center center;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 1.5s ease-out;
+    }
+
+    .brand-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+
+    .brand-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+      padding: 2rem;
+      max-width: 500px;
+      animation: slideInLeft 1s ease-out;
+    }
+
+    .brand-logo {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .brand-tagline {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .brand-features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .feature-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 120px;
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary-color);
+    }
+
+    .feature-text {
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    /* Right side - Login form */
+    .login-section {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      background-color: #f0f2f5;
+      animation: fadeIn 1.5s ease-out;
+      perspective: 1000px;
+    }
+
+    .login-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 2rem;
+      padding: 2rem;
+      width: 100%;
+      max-width: 400px;
+      margin-top: 30px;
+      border: none;
+      box-shadow:
+        inset 5px 5px 10px rgba(0, 0, 0, 0.05),
+        inset -5px -5px 10px rgba(255, 255, 255, 0.8),
+        8px 8px 15px rgba(0, 0, 0, 0.05),
+        -8px -8px 15px rgba(255, 255, 255, 0.8);
+      animation: slideInRight 1s ease-out;
+      transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+      transform: rotateX(2deg) rotateY(-2deg);
+      transform-origin: top left;
+      position: relative;
+    }
+
+    .login-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 2rem;
+      box-shadow:
+        inset 0 0 30px rgba(0, 0, 0, 0.05),
+        inset 0 0 20px rgba(255, 255, 255, 0.5);
+      pointer-events: none;
+    }
+
+    .login-card:hover {
+      transform: rotateX(1deg) rotateY(-1deg);
+      box-shadow:
+        inset 8px 8px 15px rgba(0, 0, 0, 0.05),
+        inset -8px -8px 15px rgba(255, 255, 255, 0.8),
+        12px 12px 20px rgba(0, 0, 0, 0.05),
+        -12px -12px 20px rgba(255, 255, 255, 0.8);
+    }
+
+    .login-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .login-icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      animation: pulse 2s infinite;
+    }
+
+    .login-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .login-subtitle {
+      color: var(--text-light);
+      font-size: 1rem;
+    }
+
+    .form-floating {
+      margin-bottom: 1.5rem;
+      animation: slideInLeft 0.8s ease-out;
+      animation-fill-mode: both;
+    }
+
+    .form-floating:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .form-control {
+      border-radius: 0.5rem;
+      border: 1px solid #ced4da;
+      padding: 1rem 0.75rem;
+      height: auto;
+      transition: all var(--transition-speed) ease;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+    }
+
+    .form-floating>label {
+      padding: 1rem 0.75rem;
+    }
+
+    .btn {
+      border-radius: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      font-weight: 500;
+      transition: all var(--transition-speed) ease;
+      animation: slideInUp 0.8s ease-out;
+      animation-fill-mode: both;
+      animation-delay: 0.4s;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+      border-color: var(--primary-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+    }
+
+    .social-login {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .social-login-title {
+      color: var(--text-light);
+      margin-bottom: 1rem;
+      position: relative;
+      animation: fadeIn 1s ease-out;
+      animation-fill-mode: both;
+      animation-delay: 0.6s;
+    }
+
+    .social-login-title::before,
+    .social-login-title::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 30%;
+      height: 1px;
+      background-color: #dee2e6;
+    }
+
+    .social-login-title::before {
+      left: 0;
+    }
+
+    .social-login-title::after {
+      right: 0;
+    }
+
+    .social-buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 50%;
+      transition: all var(--transition-speed) ease;
+      animation: slideInUp 0.8s ease-out;
+      animation-fill-mode: both;
+      border: none;
+      background-color: white;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .social-btn:nth-child(1) {
+      animation-delay: 0.5s;
+      color: #DB4437;
+    }
+
+    .social-btn:nth-child(2) {
+      animation-delay: 0.6s;
+      color: #4267B2;
+    }
+
+    .social-btn:nth-child(3) {
+      animation-delay: 0.7s;
+      color: #25D366;
+    }
+
+    .social-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .social-btn i {
+      font-size: 1.5rem;
+    }
+
+    .signup-link {
+      text-align: center;
+      margin-top: 1.5rem;
+      animation: fadeIn 1s ease-out;
+      animation-fill-mode: both;
+      animation-delay: 0.8s;
+    }
+
+    .signup-link a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color var(--transition-speed) ease;
+    }
+
+    .signup-link a:hover {
+      color: var(--primary-hover);
+      text-decoration: underline;
+    }
+
+    /* Navbar styling */
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.9) !important;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      animation: fadeInDown 0.8s ease-out;
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+      color: var(--primary-color) !important;
+    }
+
+    .nav-link {
+      color: var(--text-dark) !important;
+      transition: color var(--transition-speed) ease;
+    }
+
+    .nav-link:hover {
+      color: var(--primary-color) !important;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* Responsive design */
+    @media (max-width: 992px) {
+      .login-container {
+        flex-direction: column;
+      }
+
+      .brand-section {
+        min-height: 40vh;
+      }
+
+      .login-section {
+        min-height: 60vh;
+        padding: 1.5rem;
+      }
+
+      .login-card {
+        max-width: 450px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .brand-section {
+        min-height: 35vh;
+      }
+
+      .login-section {
+        min-height: 65vh;
+        padding: 1rem;
+      }
+
+      .login-card {
+        padding: 1.5rem;
+      }
+
+      .brand-logo {
+        font-size: 2.5rem;
+      }
+
+      .brand-tagline {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .brand-section {
+        min-height: 30vh;
+      }
+
+      .login-section {
+        min-height: 70vh;
+        padding: 0.75rem;
+      }
+
+      .login-card {
+        padding: 1.25rem;
+      }
+
+      .login-title {
+        font-size: 1.5rem;
+      }
+
+      .form-floating {
+        margin-bottom: 1rem;
+      }
+
+      .btn {
+        padding: 0.6rem 1.2rem;
+      }
+    }
+
+    @media (max-width: 375px) {
+      .brand-section {
+        min-height: 25vh;
+      }
+
+      .login-section {
+        min-height: 75vh;
+        padding: 0.5rem;
+      }
+
+      .login-card {
+        padding: 1rem;
+      }
+
+      .login-title {
+        font-size: 1.3rem;
+      }
+
+      .form-floating {
+        margin-bottom: 0.75rem;
+      }
+
+      .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Add these new styles */
+    #cart-details {
+      position: absolute;
+      right: 0;
+      top: 100%;
+      width: 300px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      padding: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    .cart-close {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      color: #666;
+      cursor: pointer;
+      padding: 0.2rem;
+      transition: color 0.3s ease;
+    }
+
+    .cart-close:hover {
+      color: #dc3545;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">GrocDrop.in</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="login.html">Login / Register</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              About GrocDrop
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="about.html">About Us</a></li>
+              <li><a class="dropdown-item" href="brands.html">Brands</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="help.html">Help & Support</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main container with split design -->
+  <div class="login-container">
+    <!-- Left side - Brand section -->
+    <div class="brand-section">
+      <div class="brand-content">
+        <div class="brand-logo">GrocDrop.in</div>
+        <p class="brand-tagline">Your one-stop solution for all your grocery needs. Fresh products delivered to your
+          doorstep.</p>
+
+        <div class="brand-features">
+          <div class="feature-item">
+            <i class="bi bi-truck feature-icon"></i>
+            <span class="feature-text">Fast Delivery</span>
+          </div>
+          <div class="feature-item">
+            <i class="bi bi-shield-check feature-icon"></i>
+            <span class="feature-text">Secure Payment</span>
+          </div>
+          <div class="feature-item">
+            <i class="bi bi-headset feature-icon"></i>
+            <span class="feature-text">24/7 Support</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right side - Login form -->
+    <div class="login-section">
+      <div class="login-card">
+        <div class="login-header">
+          <i class="bi bi-basket2-fill login-icon"></i>
+          <h1 class="login-title">Welcome Back</h1>
+          <p class="login-subtitle">Login to continue shopping</p>
+        </div>
+
+        <form id="loginForm" onsubmit="return validateLogin(event)">
+          <div class="form-floating">
+            <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+            <label for="email"><i class="bi bi-envelope-fill me-2"></i>Email address</label>
+          </div>
+
+          <div class="form-floating">
+            <input type="password" class="form-control" id="password" placeholder="Password" required>
+            <label for="password"><i class="bi bi-lock-fill me-2"></i>Password</label>
+          </div>
+
+          <div class="d-grid">
+            <button class="btn btn-primary" type="submit" onclick="redirectToHome(event)">Login</button>
+          </div>
+
+          <div class="signup-link">
+            <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+          </div>
+
+          <div class="social-login">
+            <p class="social-login-title">Or login using</p>
+
+            <div class="social-buttons">
+              <button class="btn social-btn" type="button" title="Login with Google">
+                <i class="bi bi-google"></i>
+              </button>
+              <button class="btn social-btn" type="button" title="Login with Facebook">
+                <i class="bi bi-facebook"></i>
+              </button>
+              <button class="btn social-btn" type="button" title="Login with Phone Number">
+                <i class="bi bi-phone"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Replace the cart-details div with this updated version -->
+  <div id="cart-details" class="container mt-3 d-none">
+    <div class="cart-header">
+      <h5 class="mb-0">Your Cart</h5>
+      <button class="cart-close" onclick="toggleCartDetails(event)">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+    <div id="cart-items" class="mb-3"></div>
+    <button class="btn btn-success w-100">Proceed to Checkout</button>
+  </div>
+
+  <!-- Login Validation and Storage Script -->
+  <script>
+    function validateLogin(event) {
+      event.preventDefault();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const userData = JSON.parse(localStorage.getItem('userData'));
+
+      if (!userData) {
+        alert("No account found. Please sign up first.");
+        return false;
+      }
+
+      if (email !== userData.email || password !== userData.password) {
+        alert("Invalid email or password. Please try again.");
+        return false;
+      }
+
+      alert("Login successful! Redirecting to homepage...");
+      window.location.href = 'index.html';
+      return true;
+    }
+
+    function redirectToHome(event) {
+      event.preventDefault();
+      document.getElementById('loginForm').dispatchEvent(new Event('submit'));
+    }
+  </script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

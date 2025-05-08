@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - GrocDrop.in</title>
+
+  <!-- Bootstrap & Animate.css -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+
+  <style>
+    body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  scroll-behavior: smooth;
+}
+
+.background-section {
+  background: url('aboutusBg.avif') no-repeat center center fixed;
+  background-size: cover;
+  width: 100%;
+}
+
+    .section {
+      padding: 60px 0;
+      background-color: rgba(205, 242, 245, 0.482);
+      backdrop-filter: blur(6px);
+      transition: all 0.5s ease-in-out;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease-in-out;
+    }
+
+    .fade-in.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .carousel-item img {
+      max-height: 300px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .team-img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .video-section iframe {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .back-button, .home-button {
+  z-index: 1050;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.back-button:hover i,
+.home-button:hover i {
+  transform: scale(1.2);
+}
+#back-home-container {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+#back-home-container.show {
+  opacity: 1;
+  transform: translateY(0);
+  display: block;
+}
+.team-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #ddd;
+    transition: transform 0.3s ease;
+  }
+
+  .team-img:hover {
+    transform: scale(1.05);
+    border-color: #007bff;
+  }
+
+  .carousel-item .col-md-4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .punched-in {
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow:
+    inset 8px 8px 16px rgba(0, 0, 0, 0.1),
+    inset -8px -8px 16px rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+}
+
+.punched-in:hover {
+  box-shadow:
+    inset 2px 2px 6px rgba(0, 0, 0, 0.2),
+    inset -2px -2px 6px rgba(255, 255, 255, 0.3),
+    0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+}
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(100px);
+  transition: all 0.8s ease-in-out;
+}
+
+.slide-in-right.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+  </style>
+</head>
+
+<body>
+    
+    <a href="javascript:history.back()" class="back-button position-fixed top-0 start-0 m-3">
+        <i class="bi bi-arrow-left-circle-fill fs-2 text-primary"></i>
+      </a>
+
+<div class="background-section">
+    
+     <!-- Intro Section -->
+  <section class="section text-center text-dark" id="intro">
+    <div class="container">
+      <h1 class="display-4 mb-4 fade-in">Welcome to GrocDrop.in</h1>
+      <p class="lead fade-in">Your one-stop online grocery destination! From fresh produce to household essentials, we deliver everything to your doorstep quickly and affordably.</p>
+      <img src="https://media.giphy.com/media/L1R1tvI9svkIWwpVYr/giphy.gif" class="img-fluid fade-in mt-4" alt="Grocery GIF">
+    </div>
+  </section>
+
+  
+    <!-- Our Journey (Video) -->
+    <section class="section video-section text-center text-dark">
+        <div class="container">
+            <h2 class="mb-4 fade-in">Our Journey</h2>
+            <div class="row justify-content-center">
+              <div class="col-md-10 fade-in">
+                <video height="400" controls class="w-100 rounded" style="height: max-content; width: max-content;">
+                    <source src="youtube_uSFTZJBBbWM_1920x1080_h264.mp4" style="height: max-content; width: max-content;" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                  
+              </div>
+            </div>
+          </div>
+    </section>
+  </div>
+  <!-- Background Wrapper Ends -->
+ 
+
+  <!-- About Company -->
+  <section class="py-5 bg-light" id="about-company">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold animate__animated animate__fadeInDown">About GrocDrop.in</h2>
+        <p class="lead text-muted animate__animated animate__fadeInUp animate__delay-1s">
+          Empowering everyday essentials at your doorstep – fast, fresh, and affordable.
+        </p>
+      </div>
+
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-6 slide-in-right">
+            <img src="bestbrand.webp"
+                 style="height: 400px; width: 400px; object-fit: cover;" 
+                 alt="Company Vision" 
+                 class="img-fluid punched-in">
+          </div>
+          
+          
+        <div class="col-lg-6 animate__animated animate__fadeInRight">
+          <h4 class="fw-semibold">Who We Are</h4>
+          <p>GrocDrop.in is an innovative online grocery delivery platform that connects customers with local and global food brands. From fresh produce to everyday essentials, we make grocery shopping fast, affordable, and convenient.</p>
+
+          <h4 class="fw-semibold mt-4">Our Mission</h4>
+          <p>To provide seamless and eco-friendly grocery solutions across cities, by combining technology with logistics efficiency and customer-first service.</p>
+
+          <h4 class="fw-semibold mt-4">Our Vision</h4>
+          <p>To become the leading doorstep delivery platform in India, transforming the way people shop for groceries and daily needs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ 
+  <!-- Team Section -->
+<section class="section text-center text-dark">
+    <div class="container">
+      <h2 class="mb-4 fade-in">Meet Our Team</h2>
+  
+      <!-- Carousel -->
+      <div id="teamCarousel" class="carousel slide fade-in" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row justify-content-center">
+              <div class="col-md-4 mb-4">
+                <img src="afnan.jpg " style="height: 270px; width: 270px; object-fit: cover; margin-top: 20px;" class="team-img" alt="CEO">
+                <h5 class="mt-3">Afnan Pasha</h5>
+                <p>Founder & CEO</p>
+              </div>
+              <div class="col-md-4 mb-4">
+                <img src="adi.jpg" class="team-img"style="height: 270px; width: 270px; object-fit: cover;margin-top: 20px;" alt="Co-founder">
+                <h5 class="mt-3">Adithya Sahani</h5>
+                <p>Co-Founder & COO</p>
+              </div>
+              <div class="col-md-4 mb-4">
+                <img src="giri.jpg" class="team-img" style="height: 270px; width: 270px; object-fit: cover;margin-top: 20px;"alt="CTO">
+                <h5 class="mt-3">Giridhar</h5>
+                <p>CTO</p>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+  
+        <!-- Carousel Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#teamCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#teamCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+  
+  
+
+  <!-- Brand Collaborations -->
+  <section class="py-5 bg-white" id="our-brands">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2 class="fw-bold animate__animated animate__fadeInUp">Our Brand Collaborations</h2>
+        <p class="text-muted">We proudly work with trusted household names to ensure quality and freshness.</p>
+      </div>
+
+      <div class="row text-center justify-content-center">
+        <div class="col-6 col-md-3 mb-4 animate__animated animate__fadeInUp"><img src="AMULLOGO.jpeg" class="img-fluid" alt="Amul"></div>
+        <div class="col-6 col-md-3 mb-4 animate__animated animate__fadeInUp animate__delay-1s"><img src="britnainaLOGO.svg" class="img-fluid" alt="Britannia"></div>
+        <div class="col-6 col-md-3 mb-4 animate__animated animate__fadeInUp animate__delay-2s"><img src="maggiLOGO.png" class="img-fluid" alt="Maggi"></div>
+        <div class="col-6 col-md-3 mb-4 animate__animated animate__fadeInUp animate__delay-3s"><img src="dabar.png" class="img-fluid" alt="Dabur"></div>
+        <div class="col-6 col-md-3 mb-4 animate__animated animate__fadeInUp"><img src="patanjali.png" class="img-fluid" alt="Patanjali"></div>
+        <div class="col-6 col-md-3 mb-4 animate__animated animate__fadeInUp animate__delay-1s"><img src="nestle.webp" class="img-fluid" alt="Nestle"></div>
+        <div class="col-6 col-md-3 mb-4 animate__animated animate__fadeInUp animate__delay-2s"><img src="hul.png" class="img-fluid" alt="HUL"></div>
+        <div class="col-6 col-md-3 mb-4 animate__animated animate__fadeInUp animate__delay-3s"><img src="tatalogo.png" class="img-fluid" alt="Tata"></div>
+        <div class="col-6 col-md-3 mb-4 animate__animated animate__fadeInUp"><img src="itc.png" class="img-fluid" alt="ITC"></div>
+        <div class="col-6 col-md-3 mb-4 animate__animated animate__fadeInUp animate__delay-1s"><img src="pepsi.png" class="img-fluid" alt="Pepsi"></div>
+      </div>
+    </div>
+  </section>
+ 
+  
+  <!-- Footer -->
+  <footer class="section text-center text-muted">
+    <p class="mb-0 fade-in">&copy; 2025 GrocDrop.in. All rights reserved.</p>
+  </footer>
+  <div id="back-home-container" class="text-center my-5">
+    <a href="index.html" class="btn btn-success btn-lg shadow">
+      <i class="bi bi-house-door-fill me-2"></i>Back to Homepage
+    </a>
+  </div>
+  
+  <!-- Bootstrap Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Scroll Animation Script -->
+  <script>
+    const animatedEls = document.querySelectorAll('.fade-in, .slide-in-right');
+  
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+  
+    animatedEls.forEach(el => observer.observe(el));
+  
+    const backHomeContainer = document.getElementById("back-home-container");
+  
+    window.addEventListener("scroll", () => {
+      const scrollY = window.scrollY + window.innerHeight;
+      const pageHeight = document.documentElement.scrollHeight;
+  
+      if (scrollY >= pageHeight - 10) {
+        backHomeContainer.classList.add("show");
+      } else {
+        backHomeContainer.classList.remove("show");
+      }
+    });
+  </script>
+  
+
+</body>
+</html>
